@@ -3,6 +3,7 @@ package com.ipiecoles.java.java350.repository;
 import com.ipiecoles.java.java350.model.Employe;
 import com.ipiecoles.java.java350.model.Entreprise;
 import org.junit.jupiter.api.*;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
@@ -55,5 +56,21 @@ public class EmployeRepositoryTest {
 
         //Then
         Assertions.assertEquals("40325", lastMatricule);
+    }
+
+    @Test
+    void testavgPerformanceWhereMatriculeStartsWithC() {
+        //Given
+        Employe emp = new Employe();
+        emp.setMatricule("CM0001");
+        employeRepository.save(emp);
+
+        String firstLetter = "C";
+
+        //When
+        Double resAvg = employeRepository.avgPerformanceWhereMatriculeStartsWith(firstLetter.substring(0,1)) ;
+
+        //Then
+        Assertions.assertEquals(1.0, resAvg);
     }
 }

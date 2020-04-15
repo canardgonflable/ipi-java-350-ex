@@ -210,7 +210,7 @@ class EmployeServiceTest {
     }
 
     @Test
-    void testCalculPerformanceCommercialMatriculeBeginByC() {
+    void testCalculPerformanceCommercialMatriculeNotBeginByC() {
         String matricule = "MC0002";
         Long caTraite = 25000L;
         Long objectifCa = 42000L;
